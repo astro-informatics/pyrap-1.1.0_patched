@@ -12,6 +12,7 @@ import subprocess
 RELEASE = 'current'
 
 def darwin_sdk(archlist=None):
+    return 
     if not archlist:
         archlist = 'i386'
     import platform        
@@ -221,9 +222,9 @@ def run_python(pkg, args):
         installdir = " --install-lib=%s" % args.pyprefix
 
     if sys.platform == "darwin":
-        vers, sdk = darwin_sdk(args.universal)
-        os.environ["MACOSX_DEPLOYMENT_TARGET"] = vers
-        os.environ["CFLAGS"] = sdk
+        #vers, sdk = darwin_sdk(args.universal)
+        #os.environ["MACOSX_DEPLOYMENT_TARGET"] = vers
+        #os.environ["CFLAGS"] = sdk
         os.environ["LDSHARED"] = 'g++ -g -bundle -undefined dynamic_lookup'
         if args.enable_rpath:
             os.environ["LDSHARED"] += ' -Wl,-rpath,%s/lib' %  args.prefix
